@@ -1,0 +1,29 @@
+{
+  "name": "gulp-toolbox-pipe-coverage-istanbul",
+  "version": "0.0.0",
+  "description": "pipe for coverage checks with istanbul",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp",
+    "toolbox",
+    "ootb",
+    "istanbul",
+    "coverage"
+  ],
+  "author": "Hanes Diercks <gulp-toolbox@xiphe.net>",
+  "bugs": "https://github.com/Xiphe/gulp-toolbox-pipe-coverage-istanbul/issues",
+  "license": "MIT",
+  "engines": {
+    "node": "^5.0.0"
+  },
+  "dependencies": {
+    "istanbul": "^0.4.0",
+    "through2": "^2.0.1"
+  },
+  "peer-dependencies": {
+    "gulp-toolbox-registry": "^0.0.0"
+  }
+}
