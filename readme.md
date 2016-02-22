@@ -2,6 +2,8 @@ gulp-toolbox-pipe-coverage-istanbul
 ===================================
 
 [![Build Status](https://travis-ci.org/Xiphe/gulp-toolbox-pipe-coverage-istanbul.svg?branch=master)](https://travis-ci.org/Xiphe/gulp-toolbox-pipe-coverage-istanbul)
+[![bitHound Overall Score](https://www.bithound.io/github/Xiphe/gulp-toolbox-pipe-coverage-istanbul/badges/score.svg)](https://www.bithound.io/github/Xiphe/gulp-toolbox-pipe-coverage-istanbul)
+[![bitHound Dependencies](https://www.bithound.io/github/Xiphe/gulp-toolbox-pipe-coverage-istanbul/badges/dependencies.svg)](https://www.bithound.io/github/Xiphe/gulp-toolbox-pipe-coverage-istanbul/master/dependencies/npm)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 coverage pipe using [istanbul](https://github.com/gotwarlost/istanbul) for [gulp-toolbox-registry](https://github.com/Xiphe/gulp-toolbox-registry)
