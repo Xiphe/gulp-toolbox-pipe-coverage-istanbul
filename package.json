@@ -1,10 +1,10 @@
 {
   "name": "gulp-toolbox-pipe-coverage-istanbul",
-  "version": "0.0.0",
   "description": "pipe for coverage checks with istanbul",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Intended: no test specified\" && exit 0"
+    "test": "echo \"Intended: no test specified\" && exit 0",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "gulp",
@@ -25,5 +25,12 @@
   },
   "peer-dependencies": {
     "gulp-toolbox-registry": "^0.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Xiphe/gulp-toolbox-pipe-coverage-istanbul.git"
+  },
+  "devDependencies": {
+    "semantic-release": "^4.3.5"
   }
 }
