@@ -4,7 +4,7 @@
   "description": "pipe for coverage checks with istanbul",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Intended: no test specified\" && exit 0"
   },
   "keywords": [
     "gulp",
