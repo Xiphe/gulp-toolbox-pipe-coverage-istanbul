@@ -35,6 +35,7 @@ function hookRequire(hook, lib) {
   };
 
   if (!hooked) {
+    hooked = true;
     hook.hookRequire(
       matcher,
       (__, file) => {
