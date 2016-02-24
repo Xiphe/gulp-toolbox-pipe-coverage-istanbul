@@ -50,13 +50,7 @@ function instrument(file, instrumenter, cb) {
   instrumenter.instrument(
     file.contents.toString(),
     file.path,
-    (err, instrumentedContent) => {
-      if (err) {
-        return cb(err);
-      }
-
-      cb(null, instrumentedContent);
-    }
+    cb
   );
 }
 
