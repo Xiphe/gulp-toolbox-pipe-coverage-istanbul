@@ -5,8 +5,8 @@ const through2 = require('through2');
 const path = require('path');
 const cwd = process.cwd();
 
-var unbindPreviousReporter = null;
-var hooked = false;
+let unbindPreviousReporter = null;
+let hooked = false;
 
 function getReporter(Collector, Report, coverageVariable) {
   return () => {
@@ -30,17 +30,13 @@ function bindReporter(helper, reporter) {
 }
 
 function hookRequire(hook, lib) {
-  var matcher = (file) => {
-    return Boolean(lib[path.relative(cwd, file)]);
-  };
+  const matcher = (file) => !!lib[path.relative(cwd, file)];
 
   if (!hooked) {
     hooked = true;
     hook.hookRequire(
       matcher,
-      (__, file) => {
-        return lib[path.relative(cwd, file)];
-      }
+      (__, file) => lib[path.relative(cwd, file)]
     );
   }
   hook.unloadRequireCache(matcher);
@@ -59,8 +55,8 @@ module.exports = {
   meta,
   config: {
     'coverage.enabled': {
-      default: true
-    }
+      default: true,
+    },
   },
   get(helper) {
     const config = helper.getConfig();
@@ -73,7 +69,7 @@ module.exports = {
     const istanbul = require('istanbul');
     const instrumentLib = {};
     const instrumenter = new istanbul.Instrumenter({
-      coverageVariable
+      coverageVariable,
     });
 
     bindReporter(
@@ -95,11 +91,12 @@ module.exports = {
           }
 
           instrumentLib[path.relative(cwd, file.path)] = contents;
-          file.contents = new Buffer(contents, 'utf8');
 
-          cb(null, file);
+          return cb(null, Object.assign({}, file, {
+            contents: new Buffer(contents, 'utf8'),
+          }));
         });
       }
     );
-  }
+  },
 };
