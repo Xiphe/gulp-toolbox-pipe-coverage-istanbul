@@ -2,6 +2,7 @@
 
 const meta = require('./package');
 const through2 = require('through2');
+const File = require('vinyl');
 const path = require('path');
 const cwd = process.cwd();
 
@@ -89,7 +90,10 @@ module.exports = {
 
           instrumentLib[path.relative(cwd, file.path)] = contents;
 
-          return cb(null, Object.assign({}, file, {
+          return cb(null, new File({
+            cwd: file.cwd,
+            base: file.base,
+            path: file.path,
             contents: new Buffer(contents, 'utf8'),
           }));
         });

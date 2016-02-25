@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "istanbul": "^0.4.0",
-    "through2": "^2.0.1"
+    "through2": "^2.0.1",
+    "vinyl": "^1.1.1"
   },
   "peer-dependencies": {
     "gulp-toolbox-registry": "^0.0.0"
