@@ -6,7 +6,6 @@ const path = require('path');
 const cwd = process.cwd();
 
 let unbindPreviousReporter = null;
-let hooked = false;
 
 function getReporter(Collector, Report, coverageVariable) {
   return () => {
@@ -32,13 +31,11 @@ function bindReporter(helper, reporter) {
 function hookRequire(hook, lib) {
   const matcher = (file) => !!lib[path.relative(cwd, file)];
 
-  if (!hooked) {
-    hooked = true;
-    hook.hookRequire(
-      matcher,
-      (__, file) => lib[path.relative(cwd, file)]
-    );
-  }
+  hook.hookRequire(
+    matcher,
+    (__, file) => lib[path.relative(cwd, file)]
+  );
+
   hook.unloadRequireCache(matcher);
 }
 
