@@ -22,6 +22,7 @@
   "dependencies": {
     "istanbul": "^0.4.0",
     "through2": "^2.0.1",
+    "tmp": "0.0.28",
     "vinyl": "^1.1.1"
   },
   "peer-dependencies": {

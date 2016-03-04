@@ -4,17 +4,37 @@ const meta = require('./package');
 const through2 = require('through2');
 const File = require('vinyl');
 const path = require('path');
+const tmp = require('tmp');
 const cwd = process.cwd();
+
+tmp.setGracefulCleanup();
 
 let unbindPreviousReporter = null;
 
-function getReporter(Collector, Report, coverageVariable) {
-  return () => {
-    const collector = new Collector();
-    const report = Report.create('text-summary');
+function getReporter(Collector, coverageVariable, Reporter, helper) {
+  return (data, next) => {
+    tmp.dir({ unsafeCleanup: true }, (err, tmpPath) => {
+      if (err) {
+        return next(err);
+      }
 
-    collector.add(global[coverageVariable] || {});
-    report.writeReport(collector, true);
+      const collector = new Collector();
+      const reporter = new Reporter(null, tmpPath);
+      reporter.addAll(['lcov', 'text-summary']);
+
+      collector.add(global[coverageVariable] || {});
+      return reporter.write(collector, false, (writeErr) => {
+        if (writeErr) {
+          return next(writeErr);
+        }
+
+        return helper.emit(
+          'done:report:coverage:istanbul',
+          { path: tmpPath },
+          next
+        );
+      });
+    });
   };
 }
 
@@ -74,8 +94,9 @@ module.exports = {
       helper,
       getReporter(
         istanbul.Collector,
-        istanbul.Report,
-        coverageVariable
+        coverageVariable,
+        istanbul.Reporter,
+        helper
       )
     );
 
