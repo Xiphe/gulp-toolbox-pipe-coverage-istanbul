@@ -10,10 +10,9 @@ const logger = require('gulplog');
 const tmp = require('tmp');
 const cwd = process.cwd();
 
-tmp.setGracefulCleanup();
-
 let unbindPreviousReporter = null;
 let theTmpDir = null;
+let cleanupBound = null;
 
 function getTmpDir(cb) {
   if (theTmpDir) {
@@ -22,7 +21,7 @@ function getTmpDir(cb) {
     return;
   }
 
-  tmp.dir({ unsafeCleanup: true }, (err, aTmpDir) => {
+  tmp.dir((err, aTmpDir) => {
     if (err) {
       return cb(err);
     }
@@ -92,6 +91,19 @@ function instrument(file, instrumenter, cb) {
   );
 }
 
+function bindCleanup(helper) {
+  if (cleanupBound) {
+    return;
+  }
+
+  helper.on('cleanup', () => {
+    if (theTmpDir) {
+      del.sync([theTmpDir], { force: true });
+    }
+  });
+  cleanupBound = true;
+}
+
 module.exports = {
   name: 'coverage:istanbul',
   meta,
@@ -123,6 +135,8 @@ module.exports = {
         helper
       )
     );
+
+    bindCleanup(helper);
 
     hookRequire(istanbul.hook, instrumentLib);
 

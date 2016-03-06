@@ -29,7 +29,7 @@
     "vinyl": "1.1.1"
   },
   "peer-dependencies": {
-    "gulp-toolbox-registry": "^0.1.0"
+    "gulp-toolbox-registry": "^0.3.0"
   },
   "repository": {
     "type": "git",
