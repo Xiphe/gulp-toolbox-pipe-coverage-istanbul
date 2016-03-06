@@ -23,10 +23,10 @@
     "chalk": "1.1.1",
     "del": "2.2.0",
     "gulplog": "1.0.0",
-    "istanbul": "^0.4.0",
-    "through2": "^2.0.1",
+    "istanbul": "0.4.0",
+    "through2": "2.0.1",
     "tmp": "0.0.28",
-    "vinyl": "^1.1.1"
+    "vinyl": "1.1.1"
   },
   "peer-dependencies": {
     "gulp-toolbox-registry": "^0.1.0"
@@ -36,8 +36,8 @@
     "url": "https://github.com/Xiphe/gulp-toolbox-pipe-coverage-istanbul.git"
   },
   "devDependencies": {
-    "eslint": "^2.2.0",
-    "eslint-config-airbnb": "^6.0.2",
-    "semantic-release": "^4.3.5"
+    "eslint": "2.2.0",
+    "eslint-config-airbnb": "6.0.2",
+    "semantic-release": "4.3.5"
   }
 }
