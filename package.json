@@ -20,6 +20,9 @@
     "node": "^5.0.0"
   },
   "dependencies": {
+    "chalk": "1.1.1",
+    "del": "2.2.0",
+    "gulplog": "1.0.0",
     "istanbul": "^0.4.0",
     "through2": "^2.0.1",
     "tmp": "0.0.28",

@@ -4,22 +4,43 @@ const meta = require('./package');
 const through2 = require('through2');
 const File = require('vinyl');
 const path = require('path');
+const chalk = require('chalk');
+const del = require('del');
+const logger = require('gulplog');
 const tmp = require('tmp');
 const cwd = process.cwd();
 
 tmp.setGracefulCleanup();
 
 let unbindPreviousReporter = null;
+let theTmpDir = null;
+
+function getTmpDir(cb) {
+  if (theTmpDir) {
+    del([path.join(theTmpDir, '**')], { force: true })
+      .then(() => cb(null, theTmpDir), cb);
+    return;
+  }
+
+  tmp.dir({ unsafeCleanup: true }, (err, aTmpDir) => {
+    if (err) {
+      return cb(err);
+    }
+
+    theTmpDir = aTmpDir;
+    return cb(null, aTmpDir);
+  });
+}
 
 function getReporter(Collector, coverageVariable, Reporter, helper) {
   return (data, next) => {
-    tmp.dir({ unsafeCleanup: true }, (err, tmpPath) => {
+    getTmpDir((err, tmpDir) => {
       if (err) {
         return next(err);
       }
 
       const collector = new Collector();
-      const reporter = new Reporter(null, tmpPath);
+      const reporter = new Reporter(null, tmpDir);
       reporter.addAll(['lcov', 'text-summary']);
 
       collector.add(global[coverageVariable] || {});
@@ -28,9 +49,12 @@ function getReporter(Collector, coverageVariable, Reporter, helper) {
           return next(writeErr);
         }
 
+        logger.info('Detailed coverage report available here:');
+        logger.info(chalk.blue(`file://${tmpDir}/lcov-report/index.html`));
+
         return helper.emit(
           'done:report:coverage:istanbul',
-          { path: tmpPath },
+          { path: tmpDir },
           next
         );
       });
