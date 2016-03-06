@@ -36,8 +36,8 @@
     "url": "https://github.com/Xiphe/gulp-toolbox-pipe-coverage-istanbul.git"
   },
   "devDependencies": {
-    "eslint": "2.2.0",
-    "eslint-config-airbnb": "6.0.2",
+    "eslint": "2.3.0",
+    "eslint-config-airbnb": "6.1.0",
     "semantic-release": "4.3.5"
   }
 }
