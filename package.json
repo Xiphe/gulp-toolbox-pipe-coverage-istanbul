@@ -17,7 +17,7 @@
   "bugs": "https://github.com/Xiphe/gulp-toolbox-pipe-coverage-istanbul/issues",
   "license": "MIT",
   "engines": {
-    "node": "^5.0.0"
+    "node": ">= 4.1"
   },
   "dependencies": {
     "chalk": "1.1.3",
