@@ -28,7 +28,7 @@ module.exports = {
     }
 
     const coverageVariable = `$$gtb_cov_${new Date().getTime()}$$`;
-    const istanbul = require('istanbul');
+    const istanbul = require('istanbul'); // eslint-disable-line global-require
     const instrumentLib = {};
     const instrumenter = new istanbul.Instrumenter({
       coverageVariable,
