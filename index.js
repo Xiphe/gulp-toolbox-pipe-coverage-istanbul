@@ -46,7 +46,7 @@ module.exports = {
 
     bindCleanup(helper);
 
-    hookRequire(istanbul.hook, instrumentLib);
+    const unloadCache = hookRequire(istanbul.hook, instrumentLib);
 
     return through2.obj(
       (file, __, cb) => {
@@ -64,6 +64,10 @@ module.exports = {
             contents: new Buffer(contents, 'utf8'),
           }));
         });
+      },
+      (cb) => {
+        unloadCache();
+        cb();
       }
     );
   },
