@@ -4,6 +4,7 @@ const meta = require('./package');
 const through2 = require('through2');
 const File = require('vinyl');
 const path = require('path');
+
 const cwd = process.cwd();
 
 const getReporter = require('./lib/getReporter');
@@ -27,8 +28,9 @@ module.exports = {
       return false;
     }
 
-    const coverageVariable = `$$gtb_cov_${new Date().getTime()}$$`;
     const istanbul = require('istanbul'); // eslint-disable-line global-require
+
+    const coverageVariable = `$$gtb_cov_${new Date().getTime()}$$`;
     const instrumentLib = {};
     const instrumenter = new istanbul.Instrumenter({
       coverageVariable,
