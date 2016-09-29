@@ -26,7 +26,7 @@
     "istanbul": "0.4.5",
     "through2": "2.0.1",
     "tmp": "0.0.28",
-    "vinyl": "1.2.0"
+    "vinyl": "2.0.0"
   },
   "peer-dependencies": {
     "gulp-toolbox-registry": "^0.3.0"
