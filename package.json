@@ -25,7 +25,7 @@
     "gulplog": "1.0.0",
     "istanbul": "0.4.5",
     "through2": "2.0.1",
-    "tmp": "0.0.28",
+    "tmp": "0.0.29",
     "vinyl": "2.0.0"
   },
   "peer-dependencies": {
