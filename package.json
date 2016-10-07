@@ -25,7 +25,7 @@
     "gulplog": "1.0.0",
     "istanbul": "0.4.5",
     "through2": "2.0.1",
-    "tmp": "0.0.28",
+    "tmp": "0.0.29",
     "vinyl": "2.0.0"
   },
   "peer-dependencies": {
@@ -37,8 +37,8 @@
   },
   "devDependencies": {
     "eslint": "3.7.1",
-    "eslint-config-airbnb-base": "7.0.0",
-    "eslint-plugin-import": "1.14.0",
+    "eslint-config-airbnb-base": "8.0.0",
+    "eslint-plugin-import": "2.0.0",
     "semantic-release": "4.3.5"
   }
 }
