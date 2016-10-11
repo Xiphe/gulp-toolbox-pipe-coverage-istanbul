@@ -38,7 +38,7 @@
   "devDependencies": {
     "eslint": "3.7.1",
     "eslint-config-airbnb-base": "8.0.0",
-    "eslint-plugin-import": "2.0.0",
+    "eslint-plugin-import": "2.0.1",
     "semantic-release": "4.3.5"
   }
 }
