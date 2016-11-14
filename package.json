@@ -25,7 +25,7 @@
     "gulplog": "1.0.0",
     "istanbul": "0.4.5",
     "through2": "2.0.1",
-    "tmp": "0.0.29",
+    "tmp": "0.0.30",
     "vinyl": "2.0.0"
   },
   "peer-dependencies": {
@@ -36,9 +36,9 @@
     "url": "https://github.com/Xiphe/gulp-toolbox-pipe-coverage-istanbul.git"
   },
   "devDependencies": {
-    "eslint": "3.7.1",
-    "eslint-config-airbnb-base": "8.0.0",
-    "eslint-plugin-import": "2.0.0",
+    "eslint": "3.10.1",
+    "eslint-config-airbnb-base": "10.0.1",
+    "eslint-plugin-import": "2.2.0",
     "semantic-release": "4.3.5"
   }
 }
